@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Sportkantine derde helft</title>
+	<link rel="stylesheet"  href="Horecastyle.css">
+</head>
+<body>
+	
+	<script type="text/javascript">
+		var DrankjePrice = Number (2);
+		var SmallBitterbalPrice = Number (2.50);
+		var LargeBitterbalPrice = Number (3.50);
+		
+		alert("Welkom bij sportkantine Derde helft")
+		
+		function drank() { 
+			
+			var drankje = prompt("Wat wilt u drinken u kunt kiezen uit Bier Wijn en Fris de prijzen voor alles is 2 euro");
+			if (drankje.toLowerCase() != "fris" && drankje.toLowerCase() != "bier" && drankje.toLowerCase() != "wijn"){
+				alert("U heeft of hoofdletters gebruikt of u heeft een naam ingevoerd die niet in de database voorkomt probeer het opnieuw");
+				drank();
+			}
+			else{
+				var hoeveel = prompt("Hoeveel "  + drankje +  " wilt u toevoegen aan u bestelling?");
+				var DrankjeTotalPrice = Number (DrankjePrice * hoeveel);
+				var snacks = prompt("Wilt u er nog snacks bij bestellen?");
+				if(snacks.toLowerCase() == "ja"){
+					var bitterbal = prompt("Hoeveel bitterballen wilt u 8 of 16? 8 kosten 2,50 16 kosten 3,50");
+					if(bitterbal.toLowerCase() != "8" && bitterbal != "16"){
+						alert("U kunt alleen kiezen tussen 8 of 16 bitterballen");
+					}
+					else if(bitterbal == "8"){
+						var SmallBitterbalTotalPrice = Number (DrankjeTotalPrice + SmallBitterbalPrice);
+						alert("Totaalprijs van de drankjes + de bitterballen is " + Number(SmallBitterbalTotalPrice) + " na betaling krijgt u uw bestelling direct mee");
+					}
+					else if(bitterbal == "16"){
+						var LargeBitterbalTotalPrice= Number(DrankjeTotalPrice + LargeBitterbalPrice);
+						alert("De totaalprijs van de drankje(s) en de bitterballen is " + Number(LargeBitterbalTotalPrice) + " na betaling krijgt u direct uw bestelling");
+					}
+				}
+				else if(snacks == "nee"){
+					alert("Dan krijgt u nu de rekening " + Number(DrankjeTotalPrice) + " na betaling krijgt u uw bestelling direct mee");
+				}
+			}
+			var extra = prompt("Wilt u nog iets bestellen?");
+			if(extra.toLowerCase() =="ja"){
+				drank();
+			}
+			else if (extra.toLowerCase()== "nee"){
+				alert("Oke fijne dag verder");
+			}
+		}
+		drank();
+	</script>
+
+</body>
+</html>
